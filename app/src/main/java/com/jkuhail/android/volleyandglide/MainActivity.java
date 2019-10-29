@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
-
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
             myrv = findViewById(R.id.rv);
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                             anime.setImage_url(jsonObject.getString("img"));
                             anime.setStudio(jsonObject.getString("studio"));
                             anime.setCategorie(jsonObject.getString("categorie"));
-                            //Toast.makeText(MainActivity.this,anime.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,anime.toString(),Toast.LENGTH_SHORT).show();
                             lstAnime.add(anime);
                         }
                         catch (JSONException e) {
