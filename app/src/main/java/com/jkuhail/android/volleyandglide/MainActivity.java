@@ -53,16 +53,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONArray response) {
 
-                    JSONObject jsonObject = null;
 
 
                     for (int i = 0 ; i<response.length();i++) {
 
-                        //Toast.makeText(getApplicationContext(),String.valueOf(i),Toast.LENGTH_SHORT).show();
 
                         try {
 
-                            jsonObject = response.getJSONObject(i);
+                            JSONObject jsonObject = response.getJSONObject(i);
                             Anime anime = new Anime();
 
                             anime.setName(jsonObject.getString("name"));
@@ -71,18 +69,12 @@ public class MainActivity extends AppCompatActivity {
                             anime.setImage_url(jsonObject.getString("img"));
                             anime.setStudio(jsonObject.getString("studio"));
                             anime.setCategorie(jsonObject.getString("categorie"));
-                            Toast.makeText(MainActivity.this,anime.toString(),Toast.LENGTH_SHORT).show();
                             lstAnime.add(anime);
                         }
                         catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-
-
-                    Toast.makeText(MainActivity.this,"Size of Liste "+String.valueOf(lstAnime.size()),Toast.LENGTH_SHORT).show();
-                    Toast.makeText(MainActivity.this,lstAnime.get(1).toString(),Toast.LENGTH_SHORT).show();
-
                     setRvadapter(lstAnime);
                 }
             }, new Response.ErrorListener() {
@@ -110,11 +102,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.menu,menu);
-            return super.onCreateOptionsMenu(menu);
-
-        }
     }
